@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .story-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1%;
+            height: 60px;
+            background-color: #6ccfff;
+            position: sticky;
+            top: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo .branch {
+            margin-left: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .user-feature {
+            display: flex;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .user-feature .avatar {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .user-feature .avatar .user-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .fa {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .fa:hover {
+            color: black;
+            transition: all ease-in-out 0.5s;
+        }
+        
+        .post-creator-container{
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #post-form{
+            width: 40%;
+        }
+
+        #post-content{
+            width: 100%;
+            padding: 1rem 1rem;
+            font-size: 1.5rem;
+            border-style: none;
+            border-radius: 6px;
+            outline: none;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        #post-content::placeholder{
+            text-align: center;
+            line-height: 130px;
+        }
+
+        #post-btn{
+            margin-top: 0.5rem;
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 0.25rem 0;
+            color: white;
+            background-color: #1d9ced;
+            border-style: none;
+            border-radius: 6px;
+            user-select: none;
+        }
+
+        #post-btn:disabled{
+            background-color: #e4e6eb;
+        }
+
+        #post-btn:disabled:hover{
+            background-color: #e4e6eb;
+            cursor: not-allowed;
+        }
+
+        #post-btn:focus{
+            border: none;
+            outline: none;
+        }
+
+        #post-btn:hover{
+            background-color: #3d7ea6;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="story-header-container">
+        <div class="logo">
+            <img src="./imgs/koala.png" alt="Web Icon">
+            <div class="branch">Koala's story</div>
+        </div>
+
+        <div class="user-feature">
+            <div class="avatar">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <div class="user-name">Hoang Long Phi</div>
+            </div>
+            <div class="sign-out-btn">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-body-container" style="background-color: #f0f2f5; height: 100vh;">
+        <div class="post-creator-container">
+            <form id="post-form">
+                <textarea id="post-content" name="post-content" rows="5"
+                    placeholder="What's on your mind?"></textarea> <br>
+                <button id="post-btn" type="submit" disabled>Post</button>
+            </form>
+        </div>
+    
+        <div class="user-posts" style="display: flex; justify-content: center; width: 100%; flex-direction: column; align-items: center;">
+            <div class="user-post" style="width: 40%; margin-bottom: 1rem; background-color: white; padding: 1rem; box-sizing: border-box;">
+                <div class="user-post-header" style="display:flex">
+                    <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 2rem; margin-right: 0.5rem;"></i>
+                    <div class="user-post-info">
+                        <div class="user-name">Hoang Long Phi</div>
+                        <div class="user-post-time">4hrs</div>
+                    </div>    
+                </div>
+                <div class="user-post-detail">
+                    <div class="user-post-content" style="margin: 1rem 0;">
+                        Huy bi than kinh Huy bi than kinh
+                    </div>
+                    <div class="user-post-figures">
+                        <img src="./imgs/sample_img.jpg" alt="Sample Image" style="width: 100%;">
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
