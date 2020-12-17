@@ -1,4 +1,4 @@
-import { addPostDocument, getItemFromLocalStorage } from "../utils.js";
+import { addPostDocument, getItemFromLocalStorage, uploadFileToFireStore } from "../utils.js";
 
 export class PostCreator extends HTMLElement {
     constructor() {
@@ -11,11 +11,11 @@ export class PostCreator extends HTMLElement {
             ${STYLE}
             <div class="post-creator-container">
                 <form id="post-form">
-                    <textarea id="post-content" name="post-content" 
+                    <textarea id="post-content" name="content" 
                         cols="50" rows="5" 
                         placeholder="What's on your mind?" 
                         spellcheck="false"></textarea> <br>
-                    <input type="file" id="file">
+                    <input type="file" id="post-file" name="file">
                     <button id="post-btn" type="submit" disabled>Post</button>
                 </form>
             </div>
@@ -23,6 +23,7 @@ export class PostCreator extends HTMLElement {
         const currentUser = getItemFromLocalStorage('currentUser');
         const postForm = this.shadowDom.querySelector('#post-form');
         const postContentInput = this.shadowDom.querySelector('#post-content');
+        const postFilesInput = this.shadowDom.querySelector('#post-file');
 
         postContentInput.onkeyup = () => {
             const postContent = postContentInput.value.trim();
@@ -32,7 +33,7 @@ export class PostCreator extends HTMLElement {
                 this.shadowDom.querySelector('#post-btn').setAttribute('disabled', true);
         }
 
-        postForm.addEventListener('submit', e => {
+        postForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const newPost = {
                 'userID': currentUser.id,
@@ -41,9 +42,21 @@ export class PostCreator extends HTMLElement {
                 'createdDate': new Date().toISOString(),
                 'isPublic': true
             }
-            addPostDocument(newPost);
+
+            const res = await addPostDocument(newPost);
+            const fileUrl = await uploadFileToFireStore(postFilesInput.files[0]);
             postContentInput.value = '';
+
+            this.updateFileList(fileUrl, res.id);
         })
+    }
+
+    updateFileList(url, docId){
+        const dataUpDate = {
+            files: firebase.firestore.FieldValue.arrayUnion(url)
+        }
+
+        firebase.firestore().collection('posts').doc(docId).update(dataUpDate);
     }
 }
 
