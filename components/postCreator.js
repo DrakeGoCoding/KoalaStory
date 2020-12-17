@@ -14,8 +14,8 @@ export class PostCreator extends HTMLElement {
                     <textarea id="post-content" name="post-content" 
                         cols="50" rows="5" 
                         placeholder="What's on your mind?" 
-                        spellcheck="false">
-                    </textarea> <br>
+                        spellcheck="false"></textarea> <br>
+                    <input type="file" id="file">
                     <button id="post-btn" type="submit" disabled>Post</button>
                 </form>
             </div>
