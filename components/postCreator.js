@@ -45,7 +45,7 @@ export class PostCreator extends HTMLElement {
 
             const res = await addPostDocument(newPost);
             const fileUrl = await uploadFileToFireStore(postFilesInput.files[0]);
-            postContentInput.value = '';
+            postForm.reset();
 
             this.updateFileList(fileUrl, res.id);
         })

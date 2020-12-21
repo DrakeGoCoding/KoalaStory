@@ -1,4 +1,3 @@
-import { redirect } from '../index.js'
 import { getItemFromLocalStorage } from '../utils.js';
 
 export class StoryHeader extends HTMLElement {
@@ -31,7 +30,7 @@ export class StoryHeader extends HTMLElement {
         const signOutBtn = this.shadowDom.querySelector('.sign-out-btn');
         signOutBtn.onclick = () => {
             localStorage.removeItem('currentUser');
-            redirect('login');
+            router.navigate('/login');
         }
     }
 }
