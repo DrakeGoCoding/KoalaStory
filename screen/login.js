@@ -111,5 +111,11 @@ const STYLE = `
             color: #3d7ea6;
             cursor: pointer;
         }
+
+        @media only screen and (max-width: 768px){
+            #login-form{
+                width: 100%;
+            }
+        }
     </style>
 `

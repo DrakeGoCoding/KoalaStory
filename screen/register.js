@@ -171,5 +171,11 @@ const STYLE = `
             color: #3d7ea6;
             cursor: pointer;
         }
+
+        @media only screen and (max-width: 1200px){
+            #register-form{
+                width: 100%;
+            }
+        }
     </style>
 `
