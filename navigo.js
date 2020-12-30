@@ -12,11 +12,15 @@ router
         'register': function () {
             redirect('register')
         },
-        'story': function () {
-            redirect('story')
+        'story': async function () {
+            const check = await checkAuthen();
+            if (check)
+                redirect('story')
+            else
+                router.navigate('login')
         },
         '*': function () {
-            router.navigate('login')
+            router.navigate('story')
         }
     })
     .resolve();
@@ -45,17 +49,10 @@ async function checkAuthen() {
             .where('email', '==', user.email)
             .where('password', '==', user.password)
             .get()
-        if (res.empty) {
-            redirect('login');
-            return false;
-        } else {
-            redirect('story');
-            return true;
-        }
-    } else {
-        redirect('login');
-        return false;
+        if (res.empty) return false;
+        return true;
     }
+    return false;
 }
 
 window.router = router

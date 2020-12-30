@@ -30,7 +30,7 @@ export class StoryHeader extends HTMLElement {
         const signOutBtn = this.shadowDom.querySelector('.sign-out-btn');
         signOutBtn.onclick = () => {
             localStorage.removeItem('currentUser');
-            router.navigate('/login');
+            router.navigate('login');
         }
     }
 }

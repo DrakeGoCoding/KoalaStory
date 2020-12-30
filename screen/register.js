@@ -26,7 +26,7 @@ export class RegisterScreen extends HTMLElement {
         `
 
         const redirectLogin = this.shadowDom.querySelector('#redirect-login');
-        redirectLogin.onclick = () => router.navigate('/login');
+        redirectLogin.onclick = () => router.navigate('login');
 
         const registerForm = this.shadowDom.querySelector('#register-form');
 
@@ -88,7 +88,7 @@ export class RegisterScreen extends HTMLElement {
                         addUserDocument(newUser);
                         emailInput.removeAttribute('alert-message');
                         alert('Register successfully');
-                        router.navigate('/login');
+                        router.navigate('login');
                     }
                 })
             }

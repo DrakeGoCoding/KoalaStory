@@ -21,7 +21,7 @@ export class LoginScreen extends HTMLElement {
         `
 
         const redirectLogin = this.shadowDom.querySelector('#redirect-register');
-        redirectLogin.onclick = () => router.navigate('/register');
+        redirectLogin.onclick = () => router.navigate('register');
 
         const loginForm = this.shadowDom.querySelector('#login-form');
         const emailInput = loginForm.querySelector('#email');
@@ -40,7 +40,7 @@ export class LoginScreen extends HTMLElement {
                 if (CryptoJS.MD5(password).toString(CryptoJS.enc.Hex) === user.password) {
                     passwordInput.removeAttribute('alert-message');
                     writeToLocalStorage('currentUser', user);
-                    router.navigate('/story');
+                    router.navigate('story');
                 }
                 else passwordInput.setAttribute('alert-message', 'Incorrect password');
             }
